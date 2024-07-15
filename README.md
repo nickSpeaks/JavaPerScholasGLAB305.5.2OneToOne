@@ -309,5 +309,91 @@ address_AddressId   is the Foreign Key in the  Teacher Table.
 Include the following deliverables in your submission -
 - Submit your source code or screenshot using the Start Assignment button in the top-right corner of the assignment page in Canvas.
 
+### Errors
+/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home/bin/java -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=61163:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /Users/nick/Documents/JavaPerScholasGLAB305.5.2OneToOne/target/classes:/Users/nick/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar:/Users/nick/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/Users/nick/.m2/repository/org/hibernate/orm/hibernate-core/6.2.6.Final/hibernate-core-6.2.6.Final.jar:/Users/nick/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/nick/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/nick/.m2/repository/org/jboss/logging/jboss-logging/3.5.0.Final/jboss-logging-3.5.0.Final.jar:/Users/nick/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/Users/nick/.m2/repository/io/smallrye/jandex/3.0.5/jandex-3.0.5.jar:/Users/nick/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/Users/nick/.m2/repository/net/bytebuddy/byte-buddy/1.12.18/byte-buddy-1.12.18.jar:/Users/nick/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.0/jakarta.xml.bind-api-4.0.0.jar:/Users/nick/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar:/Users/nick/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.2/jaxb-runtime-4.0.2.jar:/Users/nick/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.2/jaxb-core-4.0.2.jar:/Users/nick/.m2/repository/org/eclipse/angus/angus-activation/2.0.0/angus-activation-2.0.0.jar:/Users/nick/.m2/repository/org/glassfish/jaxb/txw2/4.0.2/txw2-4.0.2.jar:/Users/nick/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.1/istack-commons-runtime-4.1.1.jar:/Users/nick/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/nick/.m2/repository/org/antlr/antlr4-runtime/4.10.1/antlr4-runtime-4.10.1.jar com.billr.glab.App
+Maven + Hibernate + SQL One to One Mapping Annotations
+Jul 15, 2024 3:25:47 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate ORM core version 6.2.6.Final
+Jul 15, 2024 3:25:47 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000406: Using bytecode reflection optimizer
+Jul 15, 2024 3:25:47 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH10001002: Using built-in connection pool (not intended for production use)
+Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+Jul 15, 2024 3:25:47 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001005: Loaded JDBC driver class: com.mysql.jdbc.Driver
+Jul 15, 2024 3:25:47 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001012: Connecting with JDBC URL [jdbc:mysql://localhost:3306/db3552]
+Jul 15, 2024 3:25:47 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001001: Connection properties: {password=****, user=root}
+Jul 15, 2024 3:25:47 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001003: Autocommit mode: false
+Jul 15, 2024 3:25:47 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+INFO: HHH10001115: Connection pool size: 20 (min=1)
+Jul 15, 2024 3:25:48 PM org.hibernate.bytecode.internal.BytecodeProviderInitiator buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : bytebuddy
+Jul 15, 2024 3:25:48 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Jul 15, 2024 3:25:48 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
+INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3fcbc766] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+Hibernate: 
+    create table Address (
+        AddressId integer not null auto_increment,
+        city varchar(255),
+        state varchar(255),
+        street varchar(255),
+        zipcode integer not null,
+        primary key (AddressId)
+    ) engine=InnoDB
+Hibernate: 
+    create table Person (
+        PersonId integer not null auto_increment,
+        age integer not null,
+        email varchar(255),
+        name varchar(255),
+        adress_AddressId integer,
+        primary key (PersonId)
+    ) engine=InnoDB
+Hibernate: 
+    alter table Person 
+       drop index UK_s9vhfrqjf6vdwtqeba5ct80mt
+Hibernate: 
+    alter table Person 
+       add constraint UK_s9vhfrqjf6vdwtqeba5ct80mt unique (adress_AddressId)
+Hibernate: 
+    alter table Person 
+       add constraint FKnacoev6js7iv9uh7056493jym 
+       foreign key (adress_AddressId) 
+       references Address (AddressId)
+Hibernate: 
+    insert 
+    into
+        Address
+        (city,state,street,zipcode) 
+    values
+        (?,?,?,?)
+Hibernate: 
+    insert 
+    into
+        Person
+        (adress_AddressId,age,email,name) 
+    values
+        (?,?,?,?)
+Hibernate: 
+    insert 
+    into
+        Address
+        (city,state,street,zipcode) 
+    values
+        (?,?,?,?)
+Hibernate: 
+    insert 
+    into
+        Person
+        (adress_AddressId,age,email,name) 
+    values
+        (?,?,?,?)
+
+Process finished with exit code 0
+
 
 
